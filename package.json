@@ -1,8 +1,8 @@
 {
   "name": "itay-desing",
   "displayName": "Itay-Desing",
-  "description": "Nice Desing",
-  "version": "0.0.1",
+  "description": "My ",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.71.0"
   },
@@ -18,7 +18,7 @@
     "theme": "dark"
   },
   "bugs": {
-    "url": "https://github.com/itayyyyyyyyyyyyyyyyyyyyyyyyyyyyy/Itay-Desing/issues"
+    "url": "https://github.com/itayyyyyyyyyyyyyyyyyyyyyyyyyyyyy/Itay-Desing/"
   },
   "icon": "icon.png",
   "keywords": [
