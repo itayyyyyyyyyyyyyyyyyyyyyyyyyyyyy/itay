@@ -1,0 +1,49 @@
+{
+  "name": "itay-desing",
+  "displayName": "Itay-Desing",
+  "description": "Nice Desing",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "scripts": {
+    "deploy": "vsce publish --yarn"
+  },
+  "publisher": "Itay",
+  "categories": [
+    "Themes"
+  ],
+  "galleryBanner": {
+    "color": "#0C1016",
+    "theme": "dark"
+  },
+  "bugs": {
+    "url": "https://github.com/itayyyyyyyyyyyyyyyyyyyyyyyyyyyyy/Itay-Desing/issues"
+  },
+  "icon": "icon.png",
+  "keywords": [
+    "Itay-Desing",
+    "itay-desing",
+    "itay",
+    "theme",
+    "color",
+    "desing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itayyyyyyyyyyyyyyyyyyyyyyyyyyyyy/Itay-Desing/issues"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Itay-Desing",
+        "uiTheme": "hc-black",
+        "path": "./themes/Itay-Desing-color-theme.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "vsce": "^2.11.0"
+  }
+}
+
