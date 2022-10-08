@@ -1,5 +1,5 @@
 
-name Publish
+name: Publish
 
 # Controls when the action will run.
 on:
