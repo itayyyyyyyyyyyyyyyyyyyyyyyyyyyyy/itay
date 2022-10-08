@@ -1,6 +1,6 @@
 name: Publish 
 
-on: release: types: released
+ release: types: released
 
   workflow_dispatch:
 
