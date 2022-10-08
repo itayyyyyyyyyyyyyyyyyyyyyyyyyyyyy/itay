@@ -1,5 +1,5 @@
-name: Publish;
-oon: release: types: released
+name: Publish
+ release: types: released
 
   workflow_dispatch:
 
