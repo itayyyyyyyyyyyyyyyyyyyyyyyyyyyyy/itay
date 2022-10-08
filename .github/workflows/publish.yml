@@ -1,34 +1,30 @@
-name: Tests
 
+name: Publish
+
+# Controls when the action will run.
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types:
+      - created
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  deploy:
     strategy:
       matrix:
-        node-version: [14.x]
-
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: yarn
-    - run: yarn test
-      - name: Create release pull request or publish to npm
-        id: changesets
-        uses: changesets/action@master
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
         with:
-          title: Release Tracking
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
+          node-version: 10.x
+      - run: npm install
+      - name: Publis
+        run: npm run deploy
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
