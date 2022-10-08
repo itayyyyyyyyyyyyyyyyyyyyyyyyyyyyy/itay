@@ -305,7 +305,7 @@
 		{
 			"scope": "comment",
 			"settings": {
-				"foreground": "#ffffff77",
+				"foreground": "#658060",
 				
 			}
 		},
@@ -510,7 +510,7 @@
 				"variable.other.less"
 			],
 			"settings": {
-				"foreground": "#c4ccff"
+				"foreground": "#c6f6ff"
 			}
 		},
 		{
@@ -633,7 +633,7 @@
 				"support.variable"
 			],
 			"settings": {
-				"foreground": "#1c73ff"
+				"foreground": "#c8d9ff"
 			}
 		},
 		{
