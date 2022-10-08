@@ -7,8 +7,8 @@ on:
     types:
       - created
 
-  # Allows you to run this workflow manually from the Actions ta
-  workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tap
+
 
 jobs:
   deploy:
