@@ -1,28 +1,30 @@
+
 name: Publish
 
- on: 
-release:
- types:
-  released
+# Controls when the action will run.
+on:
+  release:
+    types:
+      - created
 
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  jobs:
+jobs:
   deploy:
-  strategy:
-  matrix:
-  os: [ubuntu-lastest]
-  runs-on: ${{ matrix.os }}
-
-  steps:
-  name: Checkout
-  uses: actions/checkout@v2
-  name: Install Node.js
-  uses: actions/setup-node@v1
-  with:
-  node-version: 10.x
-  run: npm ci
-  name: Publish
-  run: npm run deploy
-  env:
-  VSCE_PAT: ${{ secrets.VSCE_PAT }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - run: npm install
+      - name: Publis
+        run: npm run deploy
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
