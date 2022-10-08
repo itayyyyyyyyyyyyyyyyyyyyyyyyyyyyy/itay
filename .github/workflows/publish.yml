@@ -1,9 +1,9 @@
 
-name: Release
+name: publish
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 jobs:
   release:
     name: Final
