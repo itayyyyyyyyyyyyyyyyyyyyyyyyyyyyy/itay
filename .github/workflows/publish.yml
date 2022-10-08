@@ -7,7 +7,7 @@ on:
 jobs:
   release:
     name: Final
-    if: ${{ github.repository == 'primer/github-vscode-theme' }}
+   
 
     runs-on: ubuntu-latest
     steps:
@@ -15,8 +15,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
-          fetch-depth: 0
-          persist-credentials: false
+          
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
