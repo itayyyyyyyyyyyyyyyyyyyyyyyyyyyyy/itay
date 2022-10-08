@@ -1,4 +1,5 @@
 node_moduls
 .vscode
-hallo.txt
-.github/workflows/publish.yaml
+
+.github/workflows/publish.yaml 
+
