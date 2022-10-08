@@ -1,30 +1,37 @@
 
-name: publish
-
-# Controls when the action will run.
+name: Release
 on:
-  release:
-    types:
-      - created
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+  push:
+    branches:
+      - 'main'
 jobs:
-  deploy:
-    strategy:
-      matrix:
-        on: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+  release:
+    name: Final
+    if: ${{ github.repository == 'primer/github-vscode-theme' }}
+
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          node-version: 10.x
-      - run: npm install
-      - name: Publish
-        run: npm run deploy
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Create release pull request or publish to npm
+        id: changesets
+        uses: changesets/action@master
+        with:
+          title: Release Tracking
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: yarn release
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          VSCE_PAT: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
