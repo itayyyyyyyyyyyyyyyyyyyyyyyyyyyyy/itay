@@ -1,7 +1,10 @@
 name: Publish
- release: types: released
+on: 
+release:
+ types:
+  released
 
-on workflow_dispatch:
+  workflow_dispatch:
 
   jobs:
   deploy:
