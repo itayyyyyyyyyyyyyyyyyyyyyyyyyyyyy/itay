@@ -1,8 +1,9 @@
 name: "publish"
 
 on: 
-    release: 
-        types: [published]
+    puch: 
+        branch:
+        master
 
         jobs:
           release:
@@ -14,9 +15,8 @@ on:
                     name: actions/setup-node@v1.4.2
                     with: 
                       node-version: 12
-                      registry-url: 
+                      registry-url: https://registry.npmjs.org
                       name: publish
                       run: npm publish --access public
-                      working-directory: my-package
                       env: 
-                      NODE_AUTH_TOKEN: ${{secrrets.NPM_AUTH_TOKEN}}
+                      VSCE_PAT: ${{secrrets.VSCE_PAT}}
