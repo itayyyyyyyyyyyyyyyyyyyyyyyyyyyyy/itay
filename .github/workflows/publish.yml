@@ -1,22 +1,37 @@
-name: "publish"
+name: publish
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  release:
+    name: Final
+    if: ${{ github.repository == 'primer/github-vscode-theme' }}
 
-on: 
-    puch: 
-        branch:
-        master
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+          persist-credentials: false
 
-        jobs:
-          release:
-               name: publish
-                 runs-on: ubuntu-latest
-                 steps:
-                    name: checkout 
-                    uses: actions/checkout@v2.1.1
-                    name: actions/setup-node@v1.4.2
-                    with: 
-                      node-version: 12
-                      registry-url: https://registry.npmjs.org
-                      name: publish
-                      run: npm publish --access public
-                      env: 
-                      VSCE_PAT: ${{secrrets.VSCE_PAT}}
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Create release pull request or publish to npm
+        id: changesets
+        uses: changesets/action@master
+        with:
+          title: Release Tracking
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: yarn release
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        
