@@ -5,7 +5,7 @@ on:
       - 'master'
 jobs:
   release:
-    name: Final
+    name: publish
     if: ${{ github.repository == 'primer/github-vscode-theme' }}
 
     runs-on: ubuntu-latest
