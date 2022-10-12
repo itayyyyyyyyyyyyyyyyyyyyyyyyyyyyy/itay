@@ -3,7 +3,9 @@ name: publish
 on:
   release:
     types:
-      - published
+      - created
+
+      workflow_dispatch
 
 jobs:
   deploy:
