@@ -16,7 +16,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
