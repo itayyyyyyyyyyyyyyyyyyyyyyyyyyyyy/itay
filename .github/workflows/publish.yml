@@ -13,5 +13,5 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - env:
-          VSCE_PUBLISHER_TOKEN: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
         run: npm run vsce-publish -- -p $VSCE_PUBLISHER_TOKEN
