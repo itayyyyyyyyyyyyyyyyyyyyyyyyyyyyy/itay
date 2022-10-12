@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      name: Install Node.js
       - uses: actions/setup-node@v1
       - run: npm install
+      name: Publish
+      run: npm run deploy
       - env:
-          VSCE_PUBLISHER_TOKEN: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
-        run: npm run vsce-publish -- -p $VSCE_PUBLISHER_TOKEN
+          VSCE_PUBLISHER_TOKEN: ${{ secrets.VSCE_PAT }}
+        
