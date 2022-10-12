@@ -1,36 +1,17 @@
-name: publish
+name: Deploy Release
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - published
 
-
-  workflow_dispatch:
-  
-
-  release: 
-  strategy: 
-  matrix:
-  os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout 
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js 10.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 10.x
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: npm run release
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - env:
+          VSCE_PUBLISHER_TOKEN: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
+        run: npm run vsce-publish -- -p $VSCE_PUBLISHER_TOKEN
