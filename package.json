@@ -6,6 +6,9 @@
   "engines": {
     "vscode": "^1.71.0"
   },
+  "scripts": {
+    "deploy": "vsce publish --yarn"
+  },
   
   "publisher": "Itay",
   "categories": [
