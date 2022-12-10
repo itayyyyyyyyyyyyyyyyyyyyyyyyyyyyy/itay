@@ -1,7 +1,7 @@
 {
 	"name": "Itay-Desing",
 	"colors": {
-		"editor.background": "#f81717",
+		"editor.background": "#0e0e0e",
 		"editor.foreground": "#fffffffd",
 		//"activityBarBadge.background": "#000000",
 		"sideBarTitle.foreground": "#ffffff",
@@ -199,7 +199,7 @@
 "symbolIcon.fieldForeground":"#ffffff",
 "symbolIcon.fileForeground":"#62ff00",
 "symbolIcon.textForeground":"#ff0000",
-"notebook.editorBackground":"#ff0000"
+"notebook.editorBackground":"#30f00e"
 
 
 
