@@ -1,30 +1,30 @@
+name: Publish to GitHub
 
-name: Publish
-
-# Controls when the action will run.
 on:
   release:
     types:
       - created
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
-  deploy:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 10.x
-      - run: npm install
-      - name: Publis
-        run: npm run deploy
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          node-version: "12.x"
+      - run: git submodule update --init --recursive
+      - run: npm ci
+      - run: npm run vsce-package;
+      env: 
+       VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+
+      - uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: "./vscode.nlp.vsix"
+         
+         
+          
