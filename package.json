@@ -9,7 +9,6 @@
   "scripts": {
     "deploy": "vsce publish --yarn"
   },
-  
   "publisher": "Itay",
   "categories": [
     "Themes"
@@ -44,7 +43,6 @@
     ]
   },
   "devDependencies": {
-    "vsce": "^2.11.0"
+    "vsce": "^2.15.0"
   }
 }
-
